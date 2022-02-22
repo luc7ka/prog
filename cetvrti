@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <string.h>
+
+/* Napisati funkciju koja odreduje i vraca "najvece" (po abecedi) malo slovo u predanom joj
+stringu. Ako string ne sadrzi niti jedno malo slovo funkcija vraca nul-znak. Primjerice, za string
+"AgtBYcm" funkcija bi vratila znak 't'. U svrhu testiranja u funkciji main() dinamicki zauzeti
+memoriju za 20 podataka tipa char (u potpunosti rukovati memorijom). Omoguciti korisniku
+unos stringa (osigurati da sene premasi velicina prethodno zauzetog polja). Iskoristiti navedeni
+string u pozivu napisane funkciju te ispisati na ekran povratnu vrijednost. Dodatno, pozvati
+funkciju sa stringom "Ovo je string za TESTIRANJE!" ¡ na ekran ispisati povratnu vrijednost.
+[Znakovi a, b, ... , z imaju ASCII vrijednosti 97, 98, . . . , 122] */
+
+
+void malo_sl(char sP[]);
+int main()
+{
+    char *s = NULL;
+
+    s = (char*)calloc(20+1, sizeof(char));
+
+    if(s==NULL){
+        return 1;
+    }
+    fgets(s, 21, stdin);
+    int n = strlen(s);
+
+    if(s[n-1] == '\n'){
+        s[n-1] == '\0';
+    }
+
+
+    puts(s);
+    malo_sl(s);
+
+    char s2[] = "Ovo je string za TESTIRANJE!";
+    puts(s2);
+    malo_sl(s2);
+
+    free(s);
+    s = NULL;
+
+    return 0;
+}
+
+void malo_sl(char sP[]){
+
+    int i;
+
+    char max='97';
+    for(i=0; sP[i] != '\0'; i++){
+        if(sP[i]>97){
+            max=sP[i];
+        }else if(sP[i]<97){
+        printf("\0");
+        }
+    }
+    printf("%c", max);
+}
