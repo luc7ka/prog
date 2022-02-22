@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+/* Napisati funkciju koja racuna i vraca razliku produkta i zbroja znamenki predanog joj cijelog
+broja. U svrhu testiranja u funkciji main() omoguciti korisniku unos iskljucivo pozitivnih
+vrijednosti (ako unos nije pozitivan broj, ponoviti ga) u cjelobrojno polje od 9 elemenata. Pozvati
+napisanu funkciju sa svakim elementom polja kao arqumentom i ispisati a ekran povratnu
+vrijednost (vrijednosti ispisivati jednu ispod druge). */
+
+
+int funkcija (int n);
+int main()
+{
+    int i, a[9];
+    for(i=0;i<9;i++){
+        scanf("%d", &a[i]);
+
+        if(a[i]<0){
+            printf("Negativan unos. Pokusaj ponovno! -> ");
+            i--;
+        }
+    }
+
+    for(i=0;i<9;i++) {
+        printf("%d\n", funkcija(a[i]));
+    }
+
+    return 0;
+}
+
+int funkcija (int n) {
+
+    int m, sum=0, prod=1;
+
+    while (n>0) {
+        m=n%10;
+        prod=prod*m;
+        sum=sum+m;
+        n=n/10;
+
+    }
+
+    return prod-sum;
+
+
+}
