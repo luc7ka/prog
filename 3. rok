@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void funkcija(char stringP[]) {
+    
+    int i;
+    
+    for(i = 0; stringP[i] != '\0'; i++){
+        
+        if(stringP[i] >= 'A' && stringP[i] <= 'Z') {
+            
+            stringP[i] += 32;
+        }else if(stringP[i] >= 'a' && stringP[i] <= 'z') {
+            
+            stringP[i] -= 32;
+        }
+    }
+}
+
+int main(void){
+    
+    char *string = NULL;
+    
+    string = (char*)calloc(15+1, sizeof(char));
+    
+    if(string == NULL){
+        return 1;
+    }
+    
+    scanf("%15[^\n]", string);
+    
+    printf("%s\n", string);
+    funkcija(string);
+    printf("%s", string);
+    
+    free(string);
+    string = NULL;
+    
+    return 0;
+    
+}
