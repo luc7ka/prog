@@ -2,21 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void funkcija(char stringP[]) {
-    
-    int i;
-    
-    for(i = 0; stringP[i] != '\0'; i++){
-        
-        if(stringP[i] >= 'A' && stringP[i] <= 'Z') {
-            
-            stringP[i] += 32;
-        }else if(stringP[i] >= 'a' && stringP[i] <= 'z') {
-            
-            stringP[i] -= 32;
-        }
-    }
-}
+void funkcija(char[]);
 
 int main(void){
     
@@ -32,11 +18,33 @@ int main(void){
     
     printf("%s\n", string);
     funkcija(string);
-    printf("%s", string);
+    printf("%s\n", string);
+    
+    char string2[] = "PrOg1_2?!";
+     printf("%s\n", string2);
+    funkcija(string2);
+    printf("%s", string2);
+    
     
     free(string);
     string = NULL;
     
     return 0;
     
+}
+
+void funkcija(char stringP[]) {
+    
+    int i;
+    
+    for(i = 0; stringP[i] != '\0'; i++){
+        
+        if(stringP[i] >= 'A' && stringP[i] <= 'Z') {
+            
+            stringP[i] += 32;
+        }else if(stringP[i] >= 'a' && stringP[i] <= 'z') {
+            
+            stringP[i] -= 32;
+        }
+    }
 }
