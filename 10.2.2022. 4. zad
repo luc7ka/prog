@@ -10,7 +10,7 @@ stringu. Ako string ne sadrzi niti jedno malo slovo funkcija vraca nul-znak. Pri
 memoriju za 20 podataka tipa char (u potpunosti rukovati memorijom). Omoguciti korisniku
 unos stringa (osigurati da sene premasi velicina prethodno zauzetog polja). Iskoristiti navedeni
 string u pozivu napisane funkciju te ispisati na ekran povratnu vrijednost. Dodatno, pozvati
-funkciju sa stringom "Ovo je string za TESTIRANJE!" ก na ekran ispisati povratnu vrijednost.
+funkciju sa stringom "Ovo je string za TESTIRANJE!" ยก na ekran ispisati povratnu vrijednost.
 [Znakovi a, b, ... , z imaju ASCII vrijednosti 97, 98, . . . , 122] */
 
 
