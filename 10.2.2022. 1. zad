@@ -39,7 +39,7 @@ int main()
     }
 
     float sum=0;
-    int sv1;
+    float sv1;
     int br=0;
     for (i = 0; i < m; i++) {
         for (j = 0; j < m; j++) {
@@ -50,12 +50,12 @@ int main()
             }
         }
     }
-    printf("Brojac je %d", br);
-    printf("Sum je %d", sum);
-    printf("Sv je %f", sv1);
+    printf("Brojac je %d\n", br);
+    printf("Sum je %f\n", sum);
+    printf("Sv je %f\n", sv1);
 
     sv1 = sum / br;
-    printf("Srednja vrijednost ispod glavne dijagonale je %f.", sv1);
+    printf("Srednja vrijednost ispod glavne dijagonale je %f", sv1);
 
 
 
