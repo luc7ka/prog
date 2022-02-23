@@ -1,64 +1,71 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+/*1. Omogućiti korinsiku unos dimenzija kvadratne matrice dimenzija m * m
+gdje je m neparan i 4 < m <= 24 Popuniti matricu pseudo slucajnim brojevima iz [-19, 25]
+izracunati aritmeticku sredinu elemenata ispod glavvne dijagonale te asr elemenata iznad sporedne dijagonale
+Zatim izracunati i na ekran ispisati apsolutnu vrijednost razlike izracunatih vrijednosti*/
 
-/* Omoquciti korisniku unos dimenzija kvadratne matrice (2-D polja) m × m, qdje je m neparan i
-4 < m ≤ 24. Popuniti matricu parnim pseudo-slucajnim brojevima iz [-19, 25] c Z. Izracunati
-aritmetièku sredinu elemenata ispod glavne dijagonale te aritmeticku sredinu elemenata iznad
-sporedne dijagonale. Zatim, izracunati i na ekran ispisati apsolutnu vrijednost razlike izracunatih
-aritmetickih sredina. */
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+#include<time.h>
 
-
-int main()
-{
-    int m;
-
+int main(void){
+ 
+    int m, br1 = 0, br2 = 0;   //dva brojača za sporednu i glavnu dijagonalu..
+    int matrix[24][24];     
+    float svgl = 0, svsp = 0, pom = 0;       //sv glavne dijagonale, sv sporedne dijagonale
+    
+    printf("Unesite dimenzije matrice: ");
     do{
         scanf("%d", &m);
-        if (( m <= 4 || m > 24) || (m % 2 != 0)) {
-            printf("Pogreska. Pokusajte ponovno!");
-        }
-    } while ((m <= 4 || m > 24) || (m % 2 != 0));
-
-    srand((unsigned) time(NULL));
-    int mat[24][24];
-    int i,j;
-
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < m; j++) {
-
-            mat[i][j] = -19 + (float)rand() / RAND_MAX * (25 - (-19) -1);
+    }
+    while(m <= 4 || m >=  25 || m % 2 == 0);     //zadnji uvjeti do kojih se smije ispuniti
+    
+           srand((unsigned) time (NULL));     //moraš deklarirati u mainu da možeš koristiti rand() rand_max i to...
+     
+    for(int i = 0; i < m; i++){     //opet prolaziš kroz redove...
+        
+        for(int j = 0; j < m; j++){   //opet prolaziš kroz stupce...
+            matrix[i][j] = -19 + (float)rand() / RAND_MAX * (25 - (-19));    /*ovo samo nauči napamet, uvijek je na istu shemu, 
+                                                                           na matricu stavljaš uvijek i i j, a ne broj polja*/
         }
     }
-
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < m; j++) {
-            printf(" %d ", mat[i][j]);
+    
+    for(int i = 0; i < m; i++){     //opet kroz redove
+        for(int j = 0; j < m; j++){     //opet kroz stupce
+            printf("%d   ", matrix[i][j]);     //print tablice, uvijek ostavi razmak nakon %d...
         }
-        printf("\n");
+        printf("\n");    //idi na novi red
     }
-
-    float sum=0;
-    float sv1;
-    int br=0;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < m; j++) {
-            if (i > j) {
-                printf("%d ", mat[i][j]);
-                br++;
-                sum = sum + mat[i][j];
+    
+    for(int i = 0; i < m; i++){     //redovi
+        for(int j = 0; j < m; j++){     //stupci
+            if(i > j){      //ovo nauči isto napamet, za ispod glavne dijagonale
+                svgl += matrix[i][j];     //matricu dodaješ srednjoj vrijednosti
+                br1 ++;     //brojač postaviš da ide +1
             }
         }
     }
-    printf("Brojac je %d\n", br);
-    printf("Sum je %f\n", sum);
-    printf("Sv je %f\n", sv1);
-
-    sv1 = sum / br;
-    printf("Srednja vrijednost ispod glavne dijagonale je %f", sv1);
-
-
-
-
+     
+    for(int i = 0; i < m; i++){      //redovi
+        for(int j = 0; j < m; j++){      //stupci
+            if(i + j < m - 1){      //za srednju vrijednost iznad sporedne dijagonale
+                svsp += matrix[i][j];       //matricu dodaješ srednjoj vrijednosti....
+                br2 ++;      //drugi brojač isto postaviš da ide +1...
+            }
+        }
+    }
+    
+    svgl /= br1;    //srednja vrijednost glavne dijagonale djeliš sa brojačem..
+    svsp /= br2;    //srednja vrijednost sporedne dijagonale djeliš sa brojačem
+    printf("\nSrednja vrijednost elemenata ispod glavne dijagonale: %8.2f \n", svgl);  //osmica na floatu označuje razmak??
+    printf("Srednja vrijednost elemenata iznad sporedne dijagonale: %8.2f \n", svsp);  //isto valjda
+    
+    pom = (float)abs(svgl - svsp);    //apsolutna vrijednost razlike izracunatih vrijednosti, dodaj float na abs(apsolutnu)
+    
+    printf("\nApsoludtna vrijednost elemenata: %8.2f \n", pom);
+    
+    
+    
+    
     return 0;
 }
