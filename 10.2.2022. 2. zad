@@ -19,6 +19,7 @@ int main()
 
         if(a[i]<0){
             printf("Negativan unos. Pokusaj ponovno! -> ");
+            scanf("%d", &a[i]);
             i--;
         }
     }
