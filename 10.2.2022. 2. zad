@@ -1,49 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+/*Napisati funkciju koja racuna i vraca razliku produkta i zbroja znamenki predanog joj cijelog broja 
+U svrhu testiranja u funkciji main omoguciti unos iskljucivo pozitivnih vrijednost u cjelobrojno polje od 9 elmenata 
+Pozvati fuknicju sa svakim elementom polja kao argument i napisati na ekran povratnu vrijednost*/
 
-
-/* Napisati funkciju koja racuna i vraca razliku produkta i zbroja znamenki predanog joj cijelog
-broja. U svrhu testiranja u funkciji main() omoguciti korisniku unos iskljucivo pozitivnih
-vrijednosti (ako unos nije pozitivan broj, ponoviti ga) u cjelobrojno polje od 9 elemenata. Pozvati
-napisanu funkciju sa svakim elementom polja kao arqumentom i ispisati a ekran povratnu
-vrijednost (vrijednosti ispisivati jednu ispod druge). */
-
-
-int funkcija (int n);
-int main()
-{
-    int i, a[9];
-    for(i=0;i<9;i++){
-        scanf("%d", &a[i]);
-
-        if(a[i]<0){
-            printf("Negativan unos. Pokusaj ponovno! -> ");
-            scanf("%d", &a[i]);
-            i--;
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+int fuknkcija(int n);
+int main(void){
+    
+    int niz[4];
+    int temp;
+    
+    for(int i = 0; i < 4; i++){
+        
+        do{
+            scanf("%d", &niz[i]);
         }
+        while(niz[i] < 0);
     }
-
-    for(i=0;i<9;i++) {
-        printf("%d\n", funkcija(a[i]));
+    
+    for(int i = 0; i < 4; i++){
+        temp = fuknkcija(niz[i]);
+        printf("%d. = %d \n", i+1 , temp);
     }
-
+    
     return 0;
 }
 
-int funkcija (int n) {
 
-    int m, sum=0, prod=1;
-
-    while (n>0) {
-        m=n%10;
-        prod=prod*m;
-        sum=sum+m;
-        n=n/10;
-
+int fuknkcija(int n){
+    
+    int sum = 0, prod = 1, pom;
+    do{
+        pom = n % 10;
+        sum += pom;
+        prod *= pom;
+        n /= 10;
     }
-
-    return prod-sum;
-
-
+    while(n != 0);
+    
+    pom = prod - sum;
+    
+    return pom;
 }
