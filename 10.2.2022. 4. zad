@@ -26,7 +26,7 @@ int main(void){
         string[n - 1] = '\0';
     }
     
-    funkcija(string);
+    funkcija(string);        //uvedeš funkciju string koja je dolje..
     
     free(string);      //uvijek oslobodiš string
     
@@ -41,19 +41,19 @@ void funkcija(char stringP[]){
     int n = 0;
     for(int i = 0; stringP[i] != '\0'; i++){
         
-        if(stringP[i] > max){
+        if(stringP[i] > max){     //ako je string i veći od maxa, max postaje broj iz stringa i
             max = stringP[i];
         }
-        if(stringP[i] >= 'a' && stringP[i] <= 'z'){
+        if(stringP[i] >= 'a' && stringP[i] <= 'z'){     //ako je string i veći od a i manji od z, n postaje 1
         n = 1;
         }
         
     }
     
-    if(n == 0){
+    if(n == 0){        //ako je n jednak nuli, nema malih slova
         printf("Nema malih slova");
     }
-    else{
+    else{            //inače isprinta max...
     printf("%c", max);
         
     }
