@@ -21,8 +21,8 @@ int main(void){
     
     fgets(string, 20, stdin);   //
     
-    n = strlen(string);
-    if(string[n - 1] == '\n'){
+    n = strlen(string);       //strlen stavlja veličinu stringa u n
+    if(string[n - 1] == '\n'){   
         string[n - 1] = '\0';
     }
     
@@ -37,9 +37,9 @@ int main(void){
 
 void funkcija(char stringP[]){
     
-    char max = 'a';
+    char max = 'a';    //a je početna vrijednost, pa je na početku i max...
     int n = 0;
-    for(int i = 0; stringP[i] != '\0'; i++){
+    for(int i = 0; stringP[i] != '\0'; i++){ 
         
         if(stringP[i] > max){     //ako je string i veći od maxa, max postaje broj iz stringa i
             max = stringP[i];
