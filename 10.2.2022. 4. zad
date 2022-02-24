@@ -8,12 +8,12 @@ dinamicki zauzeti memoriju za 20 podataka tipa char */
 #include<string.h>
 
 
-void funkcija(char stringP[]);
+void funkcija(char stringP[]);     //uvedeš funkciju, mora ići P na kraj, ostaviš prazno polje..
 int main(void){
     int n;
     char *string = NULL;  //string postaviš na null
     
-    string = (char*) calloc(20 + 1, sizeof(char));
+    string = (char*) calloc(20 + 1, sizeof(char));        //ovo moras napamet
     
     if(string == NULL){    //string ne sadrži niti jedno malo slovo funkcija vraća nul-znak
         return 1;   //vraća 1, kraj
