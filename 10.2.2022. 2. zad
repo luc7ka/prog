@@ -5,13 +5,14 @@ Pozvati fuknicju sa svakim elementom polja kao argument i napisati na ekran povr
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-int fuknkcija(int n);
+
+int fuknkcija(int n);  //pozivanje funkcije u mainu
 int main(void){
     
-    int niz[4];
+    int niz[4]; 
     int temp;
     
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){  
         
         do{
             scanf("%d", &niz[i]);
